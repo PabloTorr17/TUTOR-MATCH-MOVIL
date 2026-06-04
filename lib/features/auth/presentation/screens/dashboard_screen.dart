@@ -29,6 +29,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   }
 
   Future<void> _load() async {
+    if (!mounted) return;
     setState(() => _loading = true);
     try {
       final repo = ref.read(sessionsRepositoryProvider);
@@ -36,12 +37,14 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         repo.getSessions(limit: 5),
         repo.getHistory(),
       ]);
+      if (!mounted) return;
       setState(() {
         _sessions = results[0] as List<SessionModel>;
         _history = results[1] as Map<String, dynamic>;
         _loading = false;
       });
     } catch (_) {
+      if (!mounted) return;
       setState(() => _loading = false);
     }
   }

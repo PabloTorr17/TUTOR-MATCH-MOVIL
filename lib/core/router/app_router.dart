@@ -10,6 +10,7 @@ import '../../features/sessions/presentation/screens/sessions_screen.dart';
 import '../../features/sessions/presentation/screens/session_detail_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/chat/presentation/screens/chat_screen.dart';
+import '../../features/sessions/presentation/screens/create_session_screen.dart';
 import '../../core/theme/app_theme.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -44,13 +45,14 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Detail routes (outside shell — no bottom nav)
       GoRoute(
+        path: '/sessions/create',
+        builder: (_, __) => const CreateSessionScreen(),
+      ),
+      GoRoute(
         path: '/sessions/:id',
         builder: (_, state) => SessionDetailScreen(sessionId: state.pathParameters['id']!),
       ),
-      GoRoute(
-        path: '/sessions/create',
-        builder: (_, __) => const CreateSessionPlaceholder(),
-      ),
+      
       GoRoute(
         path: '/chat/:conversationId',
         builder: (_, state) {
