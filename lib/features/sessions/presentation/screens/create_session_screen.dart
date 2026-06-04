@@ -117,7 +117,7 @@ class _CreateSessionScreenState extends ConsumerState<CreateSessionScreen> {
       final session = await ref.read(sessionsRepositoryProvider).createSession(payload);
 
       if (!mounted) return;
-      context.go('/sessions/${session.id}');
+      context.push('/sessions/${session.id}');
     } catch (e) {
       setState(() {
         try {

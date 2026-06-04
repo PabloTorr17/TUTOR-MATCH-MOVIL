@@ -9,33 +9,29 @@ import 'core/api/api_client.dart';
 import 'core/constants/app_constants.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'dart:async';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Lock to portrait
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  // Status bar style
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
 
-  // Initialize locale for date formatting
   await initializeDateFormatting('es');
 
-  // Initialize Supabase
   await Supabase.initialize(
     url: AppConstants.supabaseUrl,
     anonKey: AppConstants.supabaseAnonKey,
   );
 
-  // Initialize Stripe
+  // Stripe en background para no bloquear el arranque
   Stripe.publishableKey = AppConstants.stripePublishableKey;
-  await Stripe.instance.applySettings();
+  unawaited(Stripe.instance.applySettings());
 
-  // Initialize API client
   ApiClient().init();
 
   runApp(const ProviderScope(child: TutorMatchApp()));

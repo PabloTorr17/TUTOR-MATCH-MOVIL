@@ -11,6 +11,8 @@ import '../../features/sessions/presentation/screens/session_detail_screen.dart'
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/chat/presentation/screens/chat_screen.dart';
 import '../../features/sessions/presentation/screens/create_session_screen.dart';
+import '../../features/profile/presentation/screens/user_profile_screen.dart';
+
 import '../../core/theme/app_theme.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -23,9 +25,15 @@ final routerProvider = Provider<GoRouter>((ref) {
       final isLoading = authState.isLoading;
       final path = state.matchedLocation;
 
+      // Mientras carga no redirigir
       if (isLoading) return null;
+
+      // Si no esta autenticado, ir a login
       if (!isAuth && path != '/login' && path != '/register') return '/login';
+
+      // Si esta autenticado, no dejar entrar a login/register
       if (isAuth && (path == '/login' || path == '/register')) return '/dashboard';
+
       return null;
     },
     routes: [
@@ -68,7 +76,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/users/:id',
-        builder: (_, state) => UserProfileScreen(userId: state.pathParameters['id']!),
+        builder: (_, state) => UserProfileScreen(
+          userId: state.pathParameters['id']!,
+        ),
       ),
     ],
   );
@@ -141,18 +151,3 @@ class CreateSessionPlaceholder extends StatelessWidget {
   }
 }
 
-class UserProfileScreen extends StatelessWidget {
-  final String userId;
-  const UserProfileScreen({super.key, required this.userId});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Perfil de Tutor'),
-        leading: IconButton(icon: const Icon(Icons.arrow_back_rounded), onPressed: () => context.pop()),
-      ),
-      body: Center(child: Text('Perfil de usuario $userId')),
-    );
-  }
-}

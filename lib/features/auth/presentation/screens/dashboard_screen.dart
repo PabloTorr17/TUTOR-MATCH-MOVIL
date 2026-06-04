@@ -25,7 +25,11 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-    _load();
+    // Solo cargar si hay usuario autenticado
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final user = ref.read(authProvider).user;
+      if (user != null) _load();
+    });
   }
 
   Future<void> _load() async {
