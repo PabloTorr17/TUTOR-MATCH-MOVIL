@@ -153,6 +153,17 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
           const SizedBox(height: 12),
 
+          // Despues del card de estadisticas en profile_screen.dart
+          AppCard(
+            onTap: () => context.push('/my-sessions'),
+            child: Row(children: [
+              const Icon(Icons.history_rounded, size: 18, color: AppColors.ink3),
+              const SizedBox(width: 12),
+              const Expanded(child: Text('Mis asesorias', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600))),
+              const Icon(Icons.chevron_right_rounded, color: AppColors.ink4),
+            ]),
+          ),
+
           // Account info
           AppCard(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text('Cuenta', style: Theme.of(context).textTheme.titleLarge),

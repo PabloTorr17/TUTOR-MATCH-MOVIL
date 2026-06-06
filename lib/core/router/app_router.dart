@@ -12,6 +12,7 @@ import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/chat/presentation/screens/chat_screen.dart';
 import '../../features/sessions/presentation/screens/create_session_screen.dart';
 import '../../features/profile/presentation/screens/user_profile_screen.dart';
+import '../../features/sessions/presentation/screens/my_sessions_screen.dart';
 
 import '../../core/theme/app_theme.dart';
 
@@ -48,6 +49,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(path: '/sessions', builder: (_, __) => const SessionsScreen()),
           GoRoute(path: '/chat', builder: (_, __) => const ChatListScreen()),
           GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
+          GoRoute(path: '/my-sessions', builder: (_, __) => const MySessionsScreen()),
         ],
       ),
 
