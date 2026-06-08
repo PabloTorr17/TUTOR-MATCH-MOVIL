@@ -10,6 +10,7 @@ class AppConstants {
 
   // Supabase — reemplaza con los valores de tu proyecto
   static const String supabaseUrl = 'https://nuaqjgrbzxwcrwlloehq.supabase.co';
+  
   static const String supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im51YXFqZ3Jienh3Y3J3bGxvZWhxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk4NTAzMzMsImV4cCI6MjA5NTQyNjMzM30.BgJ8EWQm4cy04uQaWC8UvbZJV1hVKyd08ayBMvIR_IM';
 
   // Storage keys

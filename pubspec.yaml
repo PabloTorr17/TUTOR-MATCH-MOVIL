@@ -21,7 +21,7 @@ dependencies:
   # Navegacion
   go_router: ^13.2.0
 
-  # Supabase (Realtime + Auth)
+  # Supabase (Realtime + Auth + Storage)
   supabase_flutter: ^2.3.4
 
   # Almacenamiento local
@@ -33,7 +33,7 @@ dependencies:
 
   # UI
   google_fonts: ^6.2.1
-  cached_network_image: ^3.3.1
+  cached_network_image: ^3.3.1        # Cache de imagenes
   shimmer: ^3.0.0
   flutter_svg: ^2.0.10+1
 
@@ -44,6 +44,17 @@ dependencies:
 
   # Socket.io
   socket_io_client: ^2.0.3+1
+
+  # NUEVO - Subida de archivos e imagenes
+  image_picker: ^1.1.2                # Seleccionar foto de galeria o camara
+  file_picker: ^8.0.0                 # Seleccionar archivos PDF/docs
+  path: ^1.9.0
+  mime: ^1.0.5
+
+  # NUEVO - Notificaciones push
+  firebase_core: ^2.32.0
+  firebase_messaging: ^14.9.4
+  flutter_local_notifications: ^17.2.2
 
   # Iconos
   cupertino_icons: ^1.0.6
